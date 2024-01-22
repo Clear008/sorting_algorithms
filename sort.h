@@ -23,7 +23,7 @@ struct listint_s *next;
 } listint_t;
 
 
-/* Helper functions */ 
+/* Helper functions */
 void print_array(const int *array, size_t size);
 void print_list(const listint_t *list);
 
