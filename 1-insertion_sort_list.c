@@ -7,9 +7,10 @@
  */
 void insertion_sort_list(listint_t **list)
 {
+	listint_t *crnt_node, *prev_node, *temp;
+
 if (list == NULL || *list == NULL || (*list)->next == NULL)
 return;
-listint_t crnt_node, *prev_node, *temp;
 
 crnt_node = (*list)->next;
 
