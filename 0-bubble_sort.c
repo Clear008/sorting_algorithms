@@ -27,6 +27,6 @@ array[jw + 1] = temp;
 print_array(array, size);
 }
 }
-iw++
+iw++;
 }
 }
