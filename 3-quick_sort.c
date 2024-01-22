@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "sort.h"
 
 
 int l_partition(int *array, int low, int high, size_t size);
@@ -9,16 +9,25 @@ int l_partition(int *array, int low, int high, size_t size);
  */
 void quick_sort(int *array, size_t size)
 {
-int low = 0, part_indx;
-int high = size - 1;
-
 if (array == NULL || size < 2)
 return;
-
+quicksort_recursive(array, 0, size - 1, size);
+}
+/**
+ * quicksort_recursive - Recursive function to perform quicksort.
+ * @array: The array of integers to be sorted.
+ * @low: The low index of the partition.
+ * @high: The high index of the partition.
+ * @size: The size of the array.
+ */
+void quicksort_recursive(int *array, int low, int high, size_t size)
+{
 if (low < high)
 {
-part_indx = l_partition(array, low, high, size);
+int partition_index = l_partition(array, low, high, size);
 
+quicksort_recursive(array, low, partition_index - 1, size);
+quicksort_recursive(array, partition_index + 1, high, size);
 }
 }
 /**
@@ -33,9 +42,9 @@ int l_partition(int *array, int low, int high, size_t size)
 {
 int pivot = array[high];
 int i = low - 1;
-int temp;
+int temp, j;
 
-for (int j = low; j <= high - 1; j++)
+for (j = low; j <= high - 1; j++)
 {
 if (array[j] < pivot)
 {
