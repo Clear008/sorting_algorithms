@@ -34,5 +34,7 @@ void selection_sort(int *array, size_t size);
 void quick_sort(int *array, size_t size);
 int lomuto_part(int *array, int l, int h, size_t size);
 void quicksort_f(int *array, int l, int h, size_t size);
+void shell_sort(int *array, size_t size);
+int knuth(int n);
 
 #endif
