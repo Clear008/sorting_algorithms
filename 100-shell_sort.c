@@ -19,12 +19,13 @@ return (n * 3 + 1);
  */
 void shell_sort(int *array, size_t size)
 {
+int gap, n, m, temp;
+
 if (!array || size < 2)
 return;
 
-int gap, n, m, temp;
 
-for (gap = knuth(size); gap > 0; gap = knuth_sequence(gap - 1))
+for (gap = knuth(size); gap > 0; gap = knuth(gap - 1))
 {
 for (n = gap; n < (int)size; n++)
 {
