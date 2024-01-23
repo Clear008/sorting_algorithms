@@ -1,17 +1,5 @@
 #include "sort.h"
 
-
-
-/**
- * knuth - Generates the next gap in the Knuth sequence
- * @n: Current gap
- * Return: The next gap in the sequence
- */
-int knuth(int n)
-{
-return (n * 3 + 1);
-}
-
 /**
  * shell_sort - Sorts an array of integers in ascending order using Shell sort
  * @array: The array to be sorted
@@ -25,7 +13,7 @@ if (!array || size < 2)
 return;
 
 
-for (gap = knuth(size); gap > 0; gap = knuth(gap - 1))
+for (gap = size / 2; gap >= 1; gap = knuth(gap))
 {
 for (n = gap; n < (int)size; n++)
 {
@@ -42,3 +30,13 @@ print_array(array, size);
 }
 }
 
+
+/**
+ * knuth - Generates the next gap in the Knuth sequence
+ * @n: Current gap
+ * Return: The next gap in the sequence
+ */
+int knuth(int n)
+{
+return (n / 3);
+}
