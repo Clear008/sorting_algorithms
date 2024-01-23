@@ -1,42 +1,33 @@
-#include "sort.h"
-
+#include <stdio.h>
+void print_array(int *array, size_t size);
 /**
- * shell_sort - Sorts an array of integers in ascending order using Shell sort
- * @array: The array to be sorted
- * @size: Size of the array
+ * shell_sort - Sort an array of integers in ascending order.
+ * @array: An array of integers.
+ * @size: The size of the array.
  */
 void shell_sort(int *array, size_t size)
 {
-int gap, n, m, temp;
-
-if (!array || size < 2)
+size_t gap, i, j;
+if (array == NULL || size < 2)
 return;
 
+for (gap = 1; gap < size / 3;)
+gap = gap * 3 + 1;
+for (; gap >= 1; gap /= 3)
+{
+for (i = gap; i < size; i++)
+{
+j = i;
+while (j >= gap && array[j - gap] > array[j])
+{
 
-for (gap = size / 2; gap >= 1; gap = knuth(gap))
-{
-for (n = gap; n < (int)size; n++)
-{
-temp = array[n];
-
-for (m = n; m >= gap && array[m - gap] > temp; m -= gap)
-{
-array[m] = array[m - gap];
+int tmp = array[j];
+array[j] = array[j - gap];
+array[j - gap] = tmp;
+j -= gap;
 }
-
-array[m] = temp;
 }
 print_array(array, size);
 }
 }
 
-
-/**
- * knuth - Generates the next gap in the Knuth sequence
- * @n: Current gap
- * Return: The next gap in the sequence
- */
-int knuth(int n)
-{
-return (n / 3);
-}
